@@ -1,14 +1,13 @@
 #include <QtGui/QApplication>
-#include "cpixelviewer.h"
-#include "matchertmp.h"
+#include "ctreddiobjectview.h"
+#include "csphereobject.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    /*CPixelViewer w;
-    w.show();*/
-
-    MatcherTmp  tmp;
-
+    CTreddiObjectView   view;
+    CSphereObject   sph( 10 );
+    view.addTreddiObject( &sph );
+    view.show();
     return a.exec();
 }

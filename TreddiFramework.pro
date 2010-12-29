@@ -12,7 +12,10 @@ SOURCES += main.cpp \
     matchertmp.cpp \
     imageviewer.cpp \
     cviewextender.cpp \
-    cclassicview.cpp
+    cclassicview.cpp \
+    ctreddiobject.cpp \
+    ctreddiobjectview.cpp \
+    csphereobject.cpp
 HEADERS += cpixelviewer.h \
     cvector.h \
     cpixelvector.h \
@@ -20,4 +23,7 @@ HEADERS += cpixelviewer.h \
     matchertmp.h \
     imageviewer.h \
     cclassicview.h \
-    cviewextender.h
+    cviewextender.h \
+    ctreddiobject.h \
+    ctreddiobjectview.h \
+    csphereobject.h
