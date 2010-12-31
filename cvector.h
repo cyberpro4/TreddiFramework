@@ -9,19 +9,32 @@ protected:
 
 public:
     CVector();
-	CVector( float , float , float );
+    CVector( const CVector& );
+    CVector( float , float , float );
 
-	float*	array();
+    float*	array();
 
-	float	x();
-	float	y();
-	float	z();
+    float	x();
+    float	y();
+    float	z();
 
-	void	setX( float );
-	void	setY( float );
-	void	setZ( float );
+    void	setX( float );
+    void	setY( float );
+    void	setZ( float );
 
-	void	set( float , float , float );
+    void	set( float , float , float );
+
+    void    normalize();
+
+    float   length();
+
+    CVector operator - ( CVector );
+
+    void    operator = ( CVector v );
+
+    void    operator * ( CVector v );
+
+    float    angleFrom( CVector v );
 };
 
 #endif // CVECTOR_H

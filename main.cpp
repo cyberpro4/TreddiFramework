@@ -9,5 +9,6 @@ int main(int argc, char *argv[])
     CSphereObject   sph( 10 );
     view.addTreddiObject( &sph );
     view.show();
+
     return a.exec();
 }
