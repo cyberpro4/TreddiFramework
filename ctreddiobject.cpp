@@ -10,6 +10,7 @@ void CTreddiObject::render(){
     glTranslatef( m_position.x() , m_position.y() , m_position.z() );
 
     customRender();
+    m_boundingBox.render();
 
     glPopMatrix();
 }

@@ -35,7 +35,8 @@ SOURCES += main.cpp \
     lib3ds/lib3ds_camera.c \
     lib3ds/lib3ds_background.c \
     lib3ds/lib3ds_atmosphere.c \
-    c3dsmodel.cpp
+    c3dsmodel.cpp \
+    cboundingbox.cpp
 HEADERS += cpixelviewer.h \
     cvector.h \
     cpixelvector.h \
@@ -49,4 +50,5 @@ HEADERS += cpixelviewer.h \
     csphereobject.h \
     lib3ds/lib3ds_impl.h \
     lib3ds/lib3ds.h \
-    c3dsmodel.h
+    c3dsmodel.h \
+    cboundingbox.h

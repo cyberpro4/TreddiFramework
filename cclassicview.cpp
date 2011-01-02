@@ -91,7 +91,7 @@ void CClassicView::paintGL(){
 }
 
 void CClassicView::customPaint(){
-    glColor3f(1.0,1.0,1.0);
+/*    glColor3f(1.0,1.0,1.0);
     glBegin( GL_QUADS );
         float plateWidth = 5000.0;
         float h = 0.0;
@@ -104,7 +104,7 @@ void CClassicView::customPaint(){
                 glNormal3f( 0.0f, 1.0f, 0.0f);glVertex3f( x, h, y );glNormal3f( 0.0f, 1.0f, 0.0f);glVertex3f( x+xstep, h, y );glNormal3f( 0.0f, 1.0f, 0.0f);glVertex3f( x+xstep, h, y+ystep );glNormal3f( 0.0f, 1.0f, 0.0f);glVertex3f( x, h, y+ystep );
             }
         }
-    glEnd();
+    glEnd();*/
 }
 
 void CClassicView::resizeGL(int width, int height){
@@ -116,7 +116,7 @@ void CClassicView::resizeGL(int width, int height){
     glLoadIdentity();
     float m_aspectRatio = (float)width/height;
     m_fov = 45.0;
-    gluPerspective( m_fov, m_aspectRatio, 1.0, 25000.0);//60?
+    gluPerspective( m_fov, m_aspectRatio, 1.0, 500000.0);//60?
     glMatrixMode(GL_MODELVIEW);
 }
 

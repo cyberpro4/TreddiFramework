@@ -6,6 +6,9 @@ CSphereObject::CSphereObject( float rad ){
     gluQuadricDrawStyle( m_glQuadric , GL_FILL );
 
     m_radius = rad;
+
+    m_boundingBox.push( CVector( -rad,-rad,-rad ) );
+    m_boundingBox.push( CVector( rad,rad,rad ) );
 }
 
 void CSphereObject::customRender(){
