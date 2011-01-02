@@ -63,46 +63,49 @@ void C3DSModel::buildDisplayList(){
 
     glBegin( GL_TRIANGLES );
 
+    material = -1;
     for( imesh = 0; imesh < m_fileModel->nmeshes; imesh++ ){
         mesh = m_fileModel->meshes[imesh];
-        material = -1;
+
 
         for( iface = 0; iface < mesh->nfaces; iface++ ){
 
             face = &mesh->faces[iface];
 
-            if( material != face->material )
-                if( m_fileModel->materials > 0 )
-
-                    if( sambient[0] != m_fileModel->materials[material]->ambient[0] ||
+            //if( material != face->material )
+            //    if( true )//m_fileModel->materials > -1 )
+                if( material = face->material )
+                    material = face->material;
+                    /*if( sambient[0] != m_fileModel->materials[material]->ambient[0] ||
                         sambient[1] != m_fileModel->materials[material]->ambient[1] ||
                         sambient[2] != m_fileModel->materials[material]->ambient[2] ||
-                        iface == 0 ){
-                material = face->material;
-                if( face->material > 0 ){
-                    sambient[0] = m_fileModel->materials[material]->ambient[0];
-                    sambient[1] = m_fileModel->materials[material]->ambient[1];
-                    sambient[2] = m_fileModel->materials[material]->ambient[2];
-                    sdiffuse[0] = m_fileModel->materials[material]->diffuse[0];
-                    sdiffuse[1] = m_fileModel->materials[material]->diffuse[1];
-                    sdiffuse[2] = m_fileModel->materials[material]->diffuse[2];
-                    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, m_fileModel->materials[material]->ambient); // Ambient color
-                    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, m_fileModel->materials[material]->diffuse); //diffuse color
-                    //glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, m_fileModel->materials[material]->specular); //specular color
-                    /*float shine;
-                    shine = pow(2, 10.0 * m_fileModel->materials[material]->shininess);
-                    if(shine > 128.0)
-                        shine = 128.0;
-                    glMaterialf(GL_FRONT, GL_SHININESS, shine);*/
-                }else{
-                    GLfloat ambient[4] = { 1.0, 0.4, 0.0, 1.0 };
-                    GLfloat specular[4] = { 0.0, 0.0, 0.0, 0.0 };
+                        iface == 0 ){*/
+                    if(true){
+                        if( face->material > -1 ){
+                            sambient[0] = m_fileModel->materials[material]->ambient[0];
+                            sambient[1] = m_fileModel->materials[material]->ambient[1];
+                            sambient[2] = m_fileModel->materials[material]->ambient[2];
+                            sdiffuse[0] = m_fileModel->materials[material]->diffuse[0];
+                            sdiffuse[1] = m_fileModel->materials[material]->diffuse[1];
+                            sdiffuse[2] = m_fileModel->materials[material]->diffuse[2];
+                            glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, m_fileModel->materials[material]->ambient); // Ambient color
+                            glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, m_fileModel->materials[material]->diffuse); //diffuse color
+                            glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, m_fileModel->materials[material]->specular); //specular color
+                            /*float shine;
+                            shine = pow(2, 10.0 * m_fileModel->materials[material]->shininess);
+                            if(shine > 128.0)
+                                shine = 128.0;
+                            glMaterialf(GL_FRONT, GL_SHININESS, shine);*/
+                        }else{
+                            GLfloat ambient[4] = { 1.0, 0.4, 0.0, 1.0 };
+                            GLfloat specular[4] = { 0.0, 0.0, 0.0, 0.0 };
 
-                    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ambient ); // Ambient color
-                    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular ); //specular color
-                    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0);
-                }
-            }
+                            glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ambient ); // Ambient color
+                            glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular ); //specular color
+                            glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0);
+                        }
+
+                    }
 
             glNormal3f( m_normalsList.at(imesh)[iface][0] ,m_normalsList.at(imesh)[iface][1] , m_normalsList.at(imesh)[iface][2] );
             glVertex3f( (float)mesh->vertices[face->index[0]][0],
