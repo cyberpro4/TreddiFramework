@@ -71,11 +71,13 @@ void C3DSModel::buildDisplayList(){
 
             face = &mesh->faces[iface];
 
-            if( material != face->material ||
-                sambient[0] != m_fileModel->materials[material]->ambient[0] ||
-                sambient[1] != m_fileModel->materials[material]->ambient[1] ||
-                sambient[2] != m_fileModel->materials[material]->ambient[2] ||
-                iface == 0 ){
+            if( material != face->material )
+                if( m_fileModel->materials > 0 )
+
+                    if( sambient[0] != m_fileModel->materials[material]->ambient[0] ||
+                        sambient[1] != m_fileModel->materials[material]->ambient[1] ||
+                        sambient[2] != m_fileModel->materials[material]->ambient[2] ||
+                        iface == 0 ){
                 material = face->material;
                 if( face->material > 0 ){
                     sambient[0] = m_fileModel->materials[material]->ambient[0];
