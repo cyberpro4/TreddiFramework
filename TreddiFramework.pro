@@ -15,7 +15,8 @@ SOURCES += main.cpp \
     cclassicview.cpp \
     ctreddiobject.cpp \
     ctreddiobjectview.cpp \
-    csphereobject.cpp
+    csphereobject.cpp \
+    cplane.cpp
 HEADERS += cpixelviewer.h \
     cvector.h \
     cpixelvector.h \
@@ -26,4 +27,5 @@ HEADERS += cpixelviewer.h \
     cviewextender.h \
     ctreddiobject.h \
     ctreddiobjectview.h \
-    csphereobject.h
+    csphereobject.h \
+    cplane.h

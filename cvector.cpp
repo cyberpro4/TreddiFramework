@@ -76,14 +76,22 @@ float    CVector::angleFrom(CVector v){
     return acos( a / b );
 }
 
-CVector CVector::operator -( CVector v ) {
-    CVector r;
+CVector CVector::operator -( CVector v ) const {
+    return CVector( m_values[0] - v.m_values[0] ,
+                    m_values[1] - v.m_values[1] ,
+                    m_values[2] - v.m_values[2] );
+}
 
-    r.setX( m_values[0] - v.x() );
-    r.setY( m_values[1] - v.y() );
-    r.setZ( m_values[2] - v.z() );
+CVector CVector::operator + ( CVector v ) const {
+    return CVector( m_values[0] + v.m_values[0] ,
+                    m_values[1] + v.m_values[1] ,
+                    m_values[2] + v.m_values[2] );
+}
 
-    return r;
+bool    CVector::operator == ( CVector v ) const {
+    return m_values[0] == v.m_values[0] &&
+            m_values[1] == v.m_values[1] &&
+            m_values[2] == v.m_values[2];
 }
 
 void    CVector::operator =( CVector v ){
@@ -97,6 +105,11 @@ CVector CVector::cross( CVector v ) const {
                     (m_values[2] * v.m_values[0]) - ( m_values[0] * v.m_values[2]),
                     (m_values[0] * v.m_values[1]) - ( m_values[1] * v.m_values[0]) );
 }
+
+CVector CVector::operator *( float v ) const {
+    return CVector( m_values[0] * v , m_values[1] * v , m_values[2] * v );
+}
+
 void    CVector::renderAsNormal(){
 
     glPushMatrix();
