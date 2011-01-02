@@ -2,6 +2,7 @@
 #define CTREDDIOBJECT_H
 
 #include "cvector.h"
+#include "crenderinginfo.h"
 #include "cboundingbox.h"
 
 class CTreddiObject {
@@ -17,9 +18,9 @@ public:
 
     CTreddiObject();
 
-    void    render();
+    void    render( CRenderingInfo* );
 
-    virtual void customRender(){}
+    virtual void customRender( CRenderingInfo* ){}
 
     CVector *position();
     CVector *rotation();

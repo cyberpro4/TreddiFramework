@@ -39,7 +39,9 @@ SOURCES += main.cpp \
     c3dsmodel.cpp \
     cboundingbox.cpp \
     cmodel.cpp \
-    cmaterial.cpp
+    cmaterial.cpp \
+    crenderinginfo.cpp
+
 HEADERS += cpixelviewer.h \
     cvector.h \
     cpixelvector.h \
@@ -57,4 +59,5 @@ HEADERS += cpixelviewer.h \
     c3dsmodel.h \
     cboundingbox.h \
     cmodel.h \
-    cmaterial.h
+    cmaterial.h \
+    crenderinginfo.h

@@ -11,7 +11,7 @@ CSphereObject::CSphereObject( float rad ){
     m_boundingBox.push( CVector( rad,rad,rad ) );
 }
 
-void CSphereObject::customRender(){
+void CSphereObject::customRender( CRenderingInfo* rInfo ){
 
     gluSphere( m_glQuadric , m_radius , 10 , 10 );
 

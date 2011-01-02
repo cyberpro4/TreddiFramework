@@ -4,7 +4,7 @@
 CTreddiObject::CTreddiObject(){
 }
 
-void CTreddiObject::render(){
+void CTreddiObject::render( CRenderingInfo* rInfo ){
     glPushMatrix();
 
     glRotatef( m_rotation.x(), 1.0, 0.0, 0.0);
@@ -12,7 +12,7 @@ void CTreddiObject::render(){
     glRotatef( m_rotation.z(), 0.0, 0.0, 1.0);
     glTranslatef( m_position.x() , m_position.y() , m_position.z() );
 
-    customRender();
+    customRender( rInfo );
     m_boundingBox.render();
 
     glPopMatrix();

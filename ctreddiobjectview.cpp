@@ -12,30 +12,31 @@ void CTreddiObjectView::removeAllTreddiObject(){
     m_objs.clear();
 }
 
-void CTreddiObjectView::customPaint(){
-    CClassicView::customPaint();
+void CTreddiObjectView::customPaint( CRenderingInfo* rInfo ){
+    CClassicView::customPaint( rInfo );
     CTreddiObject*  obj;
     foreach( obj , m_objs ){
 
         glPushMatrix();
 
-        obj->render();
+        obj->render( rInfo );
 
         glPopMatrix();
 
     }
 
     CVector v(1,0,0);
+    float ucsSize = rInfo->m_viewCenter.z() * 0.1;
 
     glColor3fv( v.array() );
-    v.renderAsNormal();
+    v.renderAsNormal( ucsSize );
 
     v.set( 0 , 1 , 0 );
     glColor3fv( v.array() );
-    v.renderAsNormal();
+    v.renderAsNormal( ucsSize );
 
     v.set( 0 , 0 , 1 );
     glColor3fv( v.array() );
-    v.renderAsNormal();
+    v.renderAsNormal( ucsSize );
 
 }
