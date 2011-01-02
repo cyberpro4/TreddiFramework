@@ -35,6 +35,10 @@ public:
     void    operator * ( CVector v );
 
     float    angleFrom( CVector v );
+
+    CVector  cross( CVector ) const;
+
+    void    renderAsNormal();
 };
 
 #endif // CVECTOR_H

@@ -1,5 +1,6 @@
 #include "cvector.h"
 #include <math.h>
+#include <QtOpenGL>
 
 CVector::CVector(){
 	m_values[0] = m_values[1] = m_values[2] = 0;
@@ -89,6 +90,29 @@ void    CVector::operator =( CVector v ){
     m_values[0] = v.x();
     m_values[1] = v.y();
     m_values[2] = v.z();
+}
+
+CVector CVector::cross( CVector v ) const {
+    return CVector( (m_values[1] * v.m_values[2]) - ( m_values[2] * v.m_values[1]),
+                    (m_values[2] * v.m_values[0]) - ( m_values[0] * v.m_values[2]),
+                    (m_values[0] * v.m_values[1]) - ( m_values[1] * v.m_values[0]) );
+}
+void    CVector::renderAsNormal(){
+
+    glPushMatrix();
+
+        glDisable( GL_LIGHTING );
+        glLineWidth( 3 );
+        glBegin( GL_LINES );
+
+        glVertex3f( 0,0,0 );
+        glVertex3fv( m_values );
+
+        glEnd();
+
+        glEnable( GL_LIGHTING );
+    glPopMatrix();
+
 }
 
 void	CVector::set( float a , float b , float c  ){
