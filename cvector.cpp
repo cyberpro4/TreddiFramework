@@ -110,7 +110,7 @@ CVector CVector::operator *( float v ) const {
     return CVector( m_values[0] * v , m_values[1] * v , m_values[2] * v );
 }
 
-void    CVector::renderAsNormal(){
+void    CVector::renderAsNormal( float size ){
 
     glPushMatrix();
 
@@ -119,7 +119,10 @@ void    CVector::renderAsNormal(){
         glBegin( GL_LINES );
 
         glVertex3f( 0,0,0 );
-        glVertex3fv( m_values );
+        CVector fv( *this );
+        fv = fv * size;
+
+        glVertex3fv( fv.array() );
 
         glEnd();
 

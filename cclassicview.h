@@ -4,6 +4,7 @@
 #include <QtGui>
 #include <QtOpenGL>
 #include "cvector.h"
+#include "crenderinginfo.h"
 
 class CClassicView : public QGLWidget
 {
@@ -39,7 +40,7 @@ protected:
 	void mouseMoveEvent(QMouseEvent *event);
         void keyPressEvent(QKeyEvent *event);
 
-        virtual void customPaint();
+        virtual void customPaint( CRenderingInfo* );
 
 private:
         float   m_fov;          //standard 45.0

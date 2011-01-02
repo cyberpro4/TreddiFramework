@@ -1,4 +1,5 @@
 #include "cclassicview.h"
+#include "crenderinginfo.h"
 
 
 CClassicView::CClassicView(QWidget *parent)
@@ -87,10 +88,14 @@ void CClassicView::paintGL(){
        glRotatef( yRot, 0.0, 1.0, 0.0);
        glRotatef( zRot, 0.0, 0.0, 1.0);
 
-       customPaint();
+       CRenderingInfo   info;
+
+       info.m_viewCenter = m_center;
+       info.m_viewRotation.set( xRot , yRot , zRot );
+       customPaint( &info );
 }
 
-void CClassicView::customPaint(){
+void CClassicView::customPaint( CRenderingInfo* ){
     /*glColor3f(1.0,1.0,1.0);
     glBegin( GL_QUADS );
         float plateWidth = 5000.0;

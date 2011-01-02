@@ -16,7 +16,7 @@ public:
 
     CSphereObject( float radius = 10 );
 
-    virtual void customRender();
+    virtual void customRender( CRenderingInfo* );
 
 };
 

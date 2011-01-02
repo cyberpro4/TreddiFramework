@@ -43,7 +43,7 @@ public:
 
     CVector  cross( CVector ) const;
 
-    void    renderAsNormal();
+    void    renderAsNormal( float size = 1 );
 };
 
 #endif // CVECTOR_H

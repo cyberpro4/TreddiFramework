@@ -17,7 +17,7 @@ public:
     void    addTreddiObject( CTreddiObject* );
     void    removeAllTreddiObject();
 
-    virtual void customPaint();
+    virtual void customPaint( CRenderingInfo* );
 
 };
 
