@@ -3,8 +3,6 @@
 C3DSModel::C3DSModel(const char* file3ds, float x, float y, float z){
     position()->set( x, y, z );
 
-    m_selfIlluminate = false;
-
     m_fileName = QString( file3ds );
     m_fileModel = lib3ds_file_open( file3ds );
 
@@ -23,7 +21,6 @@ C3DSModel::C3DSModel(const char* file3ds, float x, float y, float z){
         m_loaded = true;
     }
 
-    m_scaleFactor = 1.0;
     m_displayList = 0;
 }
 
@@ -110,15 +107,27 @@ void C3DSModel::buildDisplayList(){
                         (float)mesh->vertices[face->index[0]][1],
                         (float)mesh->vertices[face->index[0]][2]);
 
+            m_boundingBox.push( CVector((float)mesh->vertices[face->index[0]][0],
+                                        (float)mesh->vertices[face->index[0]][1],
+                                        (float)mesh->vertices[face->index[0]][2]) );
+
             glNormal3f( m_normalsList.at(imesh)[iface][0] ,m_normalsList.at(imesh)[iface][1] , m_normalsList.at(imesh)[iface][2] );
             glVertex3f( (float)mesh->vertices[face->index[1]][0],
                         (float)mesh->vertices[face->index[1]][1],
                         (float)mesh->vertices[face->index[1]][2]);
 
+            m_boundingBox.push( CVector((float)mesh->vertices[face->index[1]][0],
+                                        (float)mesh->vertices[face->index[1]][1],
+                                        (float)mesh->vertices[face->index[1]][2]) );
+
             glNormal3f( m_normalsList.at(imesh)[iface][0] ,m_normalsList.at(imesh)[iface][1] , m_normalsList.at(imesh)[iface][2] );
             glVertex3f( (float)mesh->vertices[face->index[2]][0],
                         (float)mesh->vertices[face->index[2]][1],
                         (float)mesh->vertices[face->index[2]][2]);
+
+            m_boundingBox.push( CVector((float)mesh->vertices[face->index[2]][0],
+                                        (float)mesh->vertices[face->index[2]][1],
+                                        (float)mesh->vertices[face->index[2]][2]) );
 
         }
 
@@ -129,67 +138,6 @@ void C3DSModel::buildDisplayList(){
     glPopMatrix();
 }
 
-void* C3DSModel::getBoundedBox(){
-    boundedBox* box = new boundedBox;
-
-    box->maxX = -65535.0;
-    box->maxY = -65535.0;
-    box->maxZ = -65535.0;
-    box->minX = 65535.0;
-    box->minY = 65535.0;
-    box->minZ = 65535.0;
-
-    if( !m_loaded )
-        return box;
-
-    for( int imesh = 0; imesh < m_fileModel->nmeshes; imesh++ ){
-        Lib3dsMesh* mesh = m_fileModel->meshes[imesh];
-
-        for(int iface = 0; iface < mesh->nfaces; iface++ ){
-
-            Lib3dsFace* face = &mesh->faces[iface];
-
-            for( int ivert = 0; ivert < 3; ivert++){
-                float v[3];
-                v[0]=mesh->vertices[face->index[ivert]][0];
-                v[1]=mesh->vertices[face->index[ivert]][1];
-                v[2]=mesh->vertices[face->index[ivert]][2];
-
-                box->maxX = qMax( v[0], box->maxX );
-                box->minX = qMin( v[0], box->minX );
-                box->maxY = qMax( v[1], box->maxY );
-                box->minY = qMin( v[1], box->minY );
-                box->maxZ = qMax( v[2], box->maxZ );
-                box->minZ = qMin( v[2], box->minZ );
-            }
-
-        }
-    }
-
-    return box;
-}
-
 C3DSModel::~C3DSModel(){
     lib3ds_file_free( m_fileModel );
-}
-
-float C3DSModel::absoluteSize(){
-    boundedBox* box = (boundedBox*)getBoundedBox();
-    float size = qMax( qMax( box->maxX, box->maxY ), box->maxZ );
-    delete box;
-    return size;
-}
-
-float C3DSModel::scaleTo( float size ){
-    float me_size = absoluteSize();
-    m_scaleFactor = (double)size / me_size;
-    return m_scaleFactor;
-}
-
-float C3DSModel::scaleFactor( ){
-    return m_scaleFactor;
-}
-
-void C3DSModel::setSelfIlluminate(){
-    m_selfIlluminate = true;
 }

@@ -2,12 +2,15 @@
 #define CTREDDIOBJECT_H
 
 #include "cvector.h"
+#include "cboundingbox.h"
 
 class CTreddiObject {
 
 protected:
 
-    CVector     m_position;
+    CVector         m_position;
+
+    CBoundingBox    m_boundingBox;
 
 public:
 

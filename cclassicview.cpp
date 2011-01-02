@@ -116,7 +116,7 @@ void CClassicView::resizeGL(int width, int height){
     glLoadIdentity();
     float m_aspectRatio = (float)width/height;
     m_fov = 45.0;
-    gluPerspective( m_fov, m_aspectRatio, 1.0, 25000.0);//60?
+    gluPerspective( m_fov, m_aspectRatio, 1.0, 500000.0);//60?
     glMatrixMode(GL_MODELVIEW);
 }
 
