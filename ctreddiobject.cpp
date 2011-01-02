@@ -1,8 +1,7 @@
 #include "ctreddiobject.h"
 #include <QtOpenGL>
 
-CTreddiObject::CTreddiObject()
-{
+CTreddiObject::CTreddiObject(){
 }
 
 void CTreddiObject::render(){
@@ -13,4 +12,8 @@ void CTreddiObject::render(){
     customRender();
 
     glPopMatrix();
+}
+
+CVector* CTreddiObject::position(){
+    return &m_position;
 }

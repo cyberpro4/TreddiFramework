@@ -13,7 +13,7 @@ void CTreddiObjectView::removeAllTreddiObject(){
 }
 
 void CTreddiObjectView::customPaint(){
-
+    CClassicView::customPaint();
     CTreddiObject*  obj;
     foreach( obj , m_objs ){
 

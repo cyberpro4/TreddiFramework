@@ -17,6 +17,8 @@ public:
 
     virtual void customRender(){}
 
+    CVector *position();
+
 };
 
 #endif // CTREDDIOBJECT_H
