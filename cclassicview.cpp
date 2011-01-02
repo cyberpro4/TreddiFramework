@@ -131,7 +131,7 @@ void CClassicView::mouseMoveEvent(QMouseEvent *event){
 	int dy = event->y() - lastPos.y();
 
 	if( event->buttons() & Qt::LeftButton && event->buttons() & Qt::RightButton ){
-                distance += dy * ( distance * 0.01 );
+                m_center.setZ( m_center.z() + ( dy * ( m_center.z() * 0.04 ) ) );
 
 		lastPos = event->pos();
 		updateGL();
