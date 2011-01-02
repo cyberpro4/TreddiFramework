@@ -1,4 +1,5 @@
 #include "ctreddiobjectview.h"
+#include "cplane.h"
 
 CTreddiObjectView::CTreddiObjectView(){
 }
@@ -36,6 +37,5 @@ void CTreddiObjectView::customPaint(){
     v.set( 0 , 0 , 1 );
     glColor3fv( v.array() );
     v.renderAsNormal();
-
 
 }

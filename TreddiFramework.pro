@@ -16,6 +16,7 @@ SOURCES += main.cpp \
     ctreddiobject.cpp \
     ctreddiobjectview.cpp \
     csphereobject.cpp \
+    cplane.cpp \
     lib3ds/lib3ds_viewport.c \
     lib3ds/lib3ds_vector.c \
     lib3ds/lib3ds_util.c \
@@ -48,6 +49,7 @@ HEADERS += cpixelviewer.h \
     ctreddiobject.h \
     ctreddiobjectview.h \
     csphereobject.h \
+    cplane.h \
     lib3ds/lib3ds_impl.h \
     lib3ds/lib3ds.h \
     c3dsmodel.h \

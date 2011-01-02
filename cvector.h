@@ -28,11 +28,16 @@ public:
 
     float   length();
 
-    CVector operator - ( CVector );
+    CVector operator + ( CVector ) const;
+
+    CVector operator - ( CVector ) const;
 
     void    operator = ( CVector v );
 
+    bool    operator == ( CVector v) const;
+
     void    operator * ( CVector v );
+    CVector operator * ( float v ) const;
 
     float    angleFrom( CVector v );
 
