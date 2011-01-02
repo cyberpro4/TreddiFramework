@@ -8,12 +8,13 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     CTreddiObjectView   view;
+
     CSphereObject   sph( 1000 );
     view.addTreddiObject( &sph );
 //qDebug() << Q_FUNC_INFO << " " << __LINE__;
     C3DSModel model("./world.3ds");
     view.addTreddiObject( &model );
-//qDebug() << Q_FUNC_INFO << " " << __LINE__;
+
     view.show();
 
     return a.exec();

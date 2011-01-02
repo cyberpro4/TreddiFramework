@@ -28,7 +28,7 @@ C3DSModel::C3DSModel(const char* file3ds, float x, float y, float z){
 }
 
 void C3DSModel::customRender(){
-    //renderModel();
+    renderModel();
 }
 
 void C3DSModel::renderModel(){
