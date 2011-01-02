@@ -15,10 +15,9 @@ public:
 
     virtual void customRender();
 
-    void buildDisplayList();
-
 private:
     void renderModel();
+    void buildDisplayList();
 
 private:
     bool            m_loaded;

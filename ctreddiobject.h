@@ -9,6 +9,7 @@ class CTreddiObject {
 protected:
 
     CVector         m_position;
+    CVector         m_rotation;
 
     CBoundingBox    m_boundingBox;
 
@@ -21,6 +22,7 @@ public:
     virtual void customRender(){}
 
     CVector *position();
+    CVector *rotation();
 
 };
 
