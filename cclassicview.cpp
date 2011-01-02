@@ -5,7 +5,7 @@ CClassicView::CClassicView(QWidget *parent)
 	 : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
  {
 
-        m_center.set( 0, -500, -4000 );
+        m_center.set( 0, 0, -1 );
         xRot = 0;
         yRot = 0;
         zRot = 0;
@@ -91,7 +91,7 @@ void CClassicView::paintGL(){
 }
 
 void CClassicView::customPaint(){
-/*    glColor3f(1.0,1.0,1.0);
+    /*glColor3f(1.0,1.0,1.0);
     glBegin( GL_QUADS );
         float plateWidth = 5000.0;
         float h = 0.0;
