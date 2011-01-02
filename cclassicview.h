@@ -30,8 +30,6 @@ signals:
 	void zRotationChanged(int angle);
 
 protected:
-
-        QMainWindow     m_mainWindow;
         CVector         m_center;
 
 	void initializeGL();
@@ -39,15 +37,18 @@ protected:
 	void resizeGL(int width, int height);
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
+        void keyPressEvent(QKeyEvent *event);
 
-	virtual void customPaint(){}
+        virtual void customPaint();
 
 private:
+        float   m_fov;          //standard 45.0
+        float   m_aspectRatio;  //win.width/win.height
 
-	int xRot;
-	int yRot;
-	int zRot;
-	float distance;
+        int     xRot;
+        int     yRot;
+        int     zRot;
+        float   distance;//????????????
 
 	QPoint	lastPos;
 };
